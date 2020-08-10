@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Search = (props) => {
   return(
-    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', marginBottom: '40px'}}>
+    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', marginBottom: '40px', marginTop: '20px'}}>
       <h2>Search Animals by Type:</h2>
       <form action="" className="ui form">
       <div className="field">
