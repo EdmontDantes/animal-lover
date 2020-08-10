@@ -27,6 +27,10 @@ const AnimalCard = (props) => {
       props.handleLike(animalId)
     }}>Like
     </Button>
+    <Button className="ui red button" onClick={() => {
+      props.handleDislike(animalId)
+    }}>Dislike
+    </Button>
     <Button className="ui button" onClick={() => {
       props.handleDiscard(animalId)
     }}>Discard

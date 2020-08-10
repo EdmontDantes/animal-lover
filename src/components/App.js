@@ -22,21 +22,42 @@ class App extends Component {
   }
 
   handleLike = (animalId) => {
-    const currLikes = this.state.likes
+    const currLikes = this.state.likes.slice()
+    const currDislikes = this.state.dislikes.slice()
     const foundAnimal = this.state.animals.find((animal) => animal.animalId === animalId)
     const toCompareAlreadyLiked = currLikes.find((animal) => animal.animalId === animalId)
+    const toCompareAlreadyDisliked = currDislikes.find((animal) => animal.animalId === animalId)
+    const newDislikes = [...this.state.dislikes]
     // console.log('fa', foundAnimal)
     // console.log('tcal', toCompareAlreadyLiked)
     if(foundAnimal && (toCompareAlreadyLiked === undefined)) {
-      currLikes.push(foundAnimal)
-      this.setState({
-        likes: currLikes
-      })
+      currLikes.unshift(foundAnimal)
+    } else if (toCompareAlreadyDisliked) {
+      newDislikes = currDislikes.filter((animalToRemove) => animalToRemove.animalId !== animalId)
     }
+        this.setState({
+          likes: currLikes,
+          dislikes: newDislikes
+        })
+
   }
 
   handleDislike = (animalId) => {
-    let currDisikes = this.state.dislikes
+    const currLikes = this.state.likes.slice()
+    const currDislikes = this.state.dislikes.slice()
+    const foundAnimal = this.state.animals.find((animal) => animal.animalId === animalId)
+    const toCompareAlreadyLiked = currLikes.find((animal) => animal.animalId === animalId)
+    const toCompareAlreadyDisliked = currDislikes.find((animal) => animal.animalId === animalId)
+    const newLikes = [...this.state.likes]
+    if(foundAnimal && (toCompareAlreadyDisliked === undefined)) {
+      currDislikes.unshift(foundAnimal)
+    } else if(toCompareAlreadyLiked) {
+      newLikes = currLikes.filter((animalToRemove) => animalToRemove.animalId !== animalId)
+    }
+        this.setState({
+          likes: newLikes,
+          dislikes: currDislikes
+        })
   }
 
   handleSearch = (e) => {
@@ -48,14 +69,17 @@ class App extends Component {
   render() {
     return(
       <Fragment>
-      <Sidebar likes={this.state.likes} />
+      <Sidebar likes={this.state.likes} dislikes={this.state.dislikes}/>
     
       <div className="pusher">
       <Header />
           <Search handleSearch={this.handleSearch} searchTerm={this.state.searchTerm}/>
-          <AllCards animals={this.state.animals} searchTerm={this.state.searchTerm} handleDiscard={this.handleDiscard} handleLike={this.handleLike} />
+          <AllCards animals={this.state.animals} 
+                    searchTerm={this.state.searchTerm} 
+                    handleDiscard={this.handleDiscard} 
+                    handleLike={this.handleLike} 
+                    handleDislike={this.handleDislike} />
         </div>
-   
       
       </Fragment>
     )
