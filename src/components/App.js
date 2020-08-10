@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import animals from './data/AnimalsData'
 import Header from './Header'
-import AnimalCard from './AnimalCard'
+import AllCards from './AllCards'
 class App extends Component {
   state = {
     animals: animals.slice(),
@@ -10,8 +10,13 @@ class App extends Component {
     searchTerm: ''
   }
 
-  handleDiscard = () => {
-
+  handleDiscard = (animalId) => {
+    const updatedAnimals = this.state.animals.filter((animal) => animal.animalId !== animalId)
+    // console.log(updatedAnimals);
+    // console.log(animalId);
+    this.setState({
+      animals: updatedAnimals
+    })
   }
 
   handleLike = () => {
@@ -33,9 +38,8 @@ class App extends Component {
       <Fragment>
       <div>
       <Header />
-      <h1>Hello Begining of Animal Lover Assignment Homework</h1>
+      <AllCards animals={this.state.animals} searchTerm={this.state.searchTerm} handleDiscard={this.handleDiscard} />
       </div>
-      <AnimalCard />
       
       </Fragment>
     )

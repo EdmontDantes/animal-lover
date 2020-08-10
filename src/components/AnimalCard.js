@@ -1,80 +1,34 @@
 import React from 'react'
 import Button from './Button'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 const AnimalCard = (props) => {
+  const { image, type, name, description, animalId } = props.animal;
+  console.log(props);
   return (
-    <div>
-    <div class="ui link cards">
-  <div class="card">
-    <div class="image">
-      <img src="/images/turtle3.jpg" alt='...' />
+    <div style={{paddingTop: '30px'}}>
+    <div className="ui link cards">
+  <div className="card">
+    <div className="image">
+      <img src={image} alt='...' />
     </div>
-    <div class="content">
-      <div class="header">Matt Giampietro</div>
-      <div class="meta">
-    
+    <div className="content">
+      <div className="header">{name}</div>
+      <div className="meta">
+      {type}
       </div>
-      <div class="description">
-        Matthew is an interior designer living in New York.
+      <div className="description">
+        {description}
       </div>
     </div>
-    <div class="extra content">
-      <span class="right floated">
-        Joined in 2013
-      </span>
-      <span>
-        <i class="user icon"></i>
-        75 Friends
-      </span>
+    <div className="extra content">
+    <Button className="ui button" onClick={() => {
+      props.handleDiscard(animalId)
+    }}>Discard
+    </Button>
     </div>
   </div>
-  <div class="card">
-    <div class="image">
-      <img src="/images/owl1.jpg" alt='...' />
-    </div>
-    <div class="content">
-      <div class="header">Molly</div>
-      <div class="meta">
-        <span class="date">Coworker</span>
-      </div>
-      <div class="description">
-        Molly is a personal assistant living in Paris.
-      </div>
-    </div>
-    <div class="extra content">
-      <span class="right floated">
-        Joined in 2011
-      </span>
-      <span>
-        <i class="user icon"></i>
-        35 Friends
-      </span>
-    </div>
-  </div>
-  <div class="card">
-    <div class="image">
-      <img src="/images/cat2.jpg" alt='...' />
-    </div>
-    <div class="content">
-      <div class="header">Elyse</div>
-      <div class="meta">
-  
-      </div>
-      <div class="description">
-        Elyse is a copywriter working in New York.
-      </div>
-    </div>
-    <div class="extra content">
-      <span class="right floated">
-        Joined in 2014
-      </span>
-      <span>
-        <i class="user icon"></i>
-        151 Friends
-      </span>
-    </div>
-  </div>
+
 </div>
     </div>
   )  

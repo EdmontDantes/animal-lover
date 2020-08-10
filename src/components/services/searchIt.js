@@ -1,4 +1,5 @@
+
 let searchIt = (query) => (element) =>
-  element.subject.toLowerCase().includes(element.toLowerCase())
+  element.type.toLowerCase().includes(query.toLowerCase())
 
 export default searchIt;
