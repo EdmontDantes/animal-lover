@@ -6,7 +6,7 @@ const AnimalCard = (props) => {
   const { image, type, name, description, animalId } = props.animal;
   console.log(props);
   return (
-    <div style={{paddingTop: '30px'}}>
+    <div>
     <div className="ui link cards">
   <div className="card">
     <div className="image">

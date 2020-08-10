@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 const AllCards = (props) => {
   // console.log(props)
   return(
-    <div>
-    <div className="ui link cards">
+    <div style={{marginLeft: '400px', padding: '0px'}}>
+    <div className="ui three stackable cards">
       {props.animals.filter(searchIt(props.searchTerm)).map((animal) => {
                 return (
                   <AnimalCard key={animal.animalId} animal={animal} handleDiscard={props.handleDiscard} />

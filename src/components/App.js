@@ -3,6 +3,7 @@ import animals from './data/AnimalsData'
 import Header from './Header'
 import AllCards from './AllCards'
 import Search from './Search'
+import Sidebar from './Sidebar'
 class App extends Component {
   state = {
     animals: animals.slice(),
@@ -37,11 +38,14 @@ class App extends Component {
   render() {
     return(
       <Fragment>
-      <div>
+      <Sidebar />
+    
+      <div className="pusher">
       <Header />
-      <Search handleSearch={this.handleSearch} searchTerm={this.state.searchTerm}/>
-      <AllCards animals={this.state.animals} searchTerm={this.state.searchTerm} handleDiscard={this.handleDiscard} />
-      </div>
+          <Search handleSearch={this.handleSearch} searchTerm={this.state.searchTerm}/>
+          <AllCards animals={this.state.animals} searchTerm={this.state.searchTerm} handleDiscard={this.handleDiscard} />
+        </div>
+   
       
       </Fragment>
     )
