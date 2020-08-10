@@ -1,12 +1,12 @@
 import React from 'react'
+import Likes from './Likes'
 
-
-const Sidebar = () => {
+const Sidebar = (props) => {
 
   return(
 
       <div className="ui visible wide right vertical sidebar">
-      <h1>Hello Sidebar</h1>
+        <Likes likes={props.likes} />
       </div>
     
 

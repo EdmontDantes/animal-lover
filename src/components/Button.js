@@ -8,7 +8,7 @@ const Button = (props) => {
     <button 
       type={type}
     className={className}
-        style={{ margin: '10px 15px'}}
+        style={{ margin: '5px 5px'}}
         onClick={onClick}>{children}
         </button>
     </div>

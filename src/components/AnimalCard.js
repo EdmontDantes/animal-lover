@@ -4,9 +4,9 @@ import Button from './Button'
 
 const AnimalCard = (props) => {
   const { image, type, name, description, animalId } = props.animal;
-  console.log(props);
+  // console.log(props);
   return (
-    <div>
+    <div style={{padding: '10px'}}>
     <div className="ui link cards">
   <div className="card">
     <div className="image">
@@ -22,10 +22,16 @@ const AnimalCard = (props) => {
       </div>
     </div>
     <div className="extra content">
+    <div className="ui buttons">
+    <Button className="ui primary button" onClick={() => {
+      props.handleLike(animalId)
+    }}>Like
+    </Button>
     <Button className="ui button" onClick={() => {
       props.handleDiscard(animalId)
     }}>Discard
     </Button>
+    </div>
     </div>
   </div>
 

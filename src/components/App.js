@@ -21,12 +21,22 @@ class App extends Component {
     })
   }
 
-  handleLike = () => {
-
+  handleLike = (animalId) => {
+    const currLikes = this.state.likes
+    const foundAnimal = this.state.animals.find((animal) => animal.animalId === animalId)
+    const toCompareAlreadyLiked = currLikes.find((animal) => animal.animalId === animalId)
+    // console.log('fa', foundAnimal)
+    // console.log('tcal', toCompareAlreadyLiked)
+    if(foundAnimal && (toCompareAlreadyLiked === undefined)) {
+      currLikes.push(foundAnimal)
+      this.setState({
+        likes: currLikes
+      })
+    }
   }
 
-  handleDislike = () => {
-
+  handleDislike = (animalId) => {
+    let currDisikes = this.state.dislikes
   }
 
   handleSearch = (e) => {
@@ -38,12 +48,12 @@ class App extends Component {
   render() {
     return(
       <Fragment>
-      <Sidebar />
+      <Sidebar likes={this.state.likes} />
     
       <div className="pusher">
       <Header />
           <Search handleSearch={this.handleSearch} searchTerm={this.state.searchTerm}/>
-          <AllCards animals={this.state.animals} searchTerm={this.state.searchTerm} handleDiscard={this.handleDiscard} />
+          <AllCards animals={this.state.animals} searchTerm={this.state.searchTerm} handleDiscard={this.handleDiscard} handleLike={this.handleLike} />
         </div>
    
       

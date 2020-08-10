@@ -10,7 +10,7 @@ const AllCards = (props) => {
     <div className="ui three stackable cards">
       {props.animals.filter(searchIt(props.searchTerm)).map((animal) => {
                 return (
-                  <AnimalCard key={animal.animalId} animal={animal} handleDiscard={props.handleDiscard} />
+                  <AnimalCard key={animal.animalId} animal={animal} handleDiscard={props.handleDiscard} handleLike={props.handleLike} />
                 );
               })}
     </div>
